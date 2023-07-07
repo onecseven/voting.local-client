@@ -1,4 +1,4 @@
-import './app.css'
+import './sakura-vader.css'
 import App from './App.svelte'
 
 const app = new App({
