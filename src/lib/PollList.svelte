@@ -6,6 +6,14 @@
 
 <ul>
   {#each polls as poll}
-    <li>{poll.name}</li>
+    <button>{poll.name}</button>
   {/each}
 </ul>
+
+<style>
+  button {
+    width: 200px;
+    height: 40px;
+    text-align: left;
+  }
+</style>
