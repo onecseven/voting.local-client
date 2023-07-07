@@ -1,36 +1,18 @@
 <script lang="ts">
-  import axios from 'axios'
-  import PollList from './lib/PollList.svelte'
-  let promise = axios.get("http://127.0.0.1:3333/polls").then(({data} )=> data)
+  import { Router, Route } from "svelte-routing"
+  import Home from "./lib/Home.svelte"
+  import Poll from "./lib/Poll.svelte"
+  import CreatePoll from "./lib/CreatePoll.svelte"
 </script>
 
-<main>
-  {#await promise}
-  <p>waiting for server...</p>
-  {:then polls}
-    <PollList {polls} />
-  {:catch error}
-  <p>error</p>
-  {/await}
-  <button>
-    This goes to CreatePoll
-  </button>
-</main>
-
+<Router>
+  <Route path="/"><Home /></Route>
+  <Route path="/poll"><Poll /></Route>
+  <Route path="/create_poll"><CreatePoll/></Route>
+  <Route path="/poll_answers"><p>TODO</p></Route>
+</Router>
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
+  :global(button) {
+    transition: all 0.25s;
   }
 </style>
