@@ -1,9 +1,9 @@
 <script lang="ts">
   import axios from "axios"
-  import { Link } from "svelte-routing"
+  import { Link, navigate } from "svelte-routing"
+  import type { Poll } from "../types"
+  import { selected } from "../store"
 
-  //TODO post poll
-  //form elements auto routes enter to the button
 let name: string = ""
   let options: string[] = []
   let current_value: string = ""
@@ -14,9 +14,10 @@ let name: string = ""
   }
 
   const submit = () => axios
-                      .post("")
-                      .then(({data}: {data: Poll[]} )=> data)
-
+                      .post("http://127.0.0.1:3333/polls", ({name, options}))
+                      .then(({data}: {data: Poll}) => selected.set(data))
+                      .then(() => navigate("/poll"))
+                      .catch(e => console.error('submit error'))
    
 </script>
 
@@ -31,4 +32,6 @@ let name: string = ""
   <input bind:value={current_value} type="text" />
   <button on:click={add_value}>✓</button>
 </form >
-<button disabled={!(options.length >= 2 && name.replace(/\s+/g, ""))} type="submit">create poll</button>
+<button disabled={!(options.length >= 2 && name.replace(/\s+/g, ""))} on:click={submit} type="submit">
+create poll
+</button>
