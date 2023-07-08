@@ -1,19 +1,34 @@
 <script lang="ts">
-//DONE createPoll form
-//DONE name header
-//done option field, 
-//TODO checkmark button next also captures enter
-//DONE submit field at the end
-//TODO ADD INTERNAL STATE FOR THE FORM HERE
+  import axios from "axios"
+  import { Link } from "svelte-routing"
+
+  //TODO post poll
+  //form elements auto routes enter to the button
+let name: string = ""
+  let options: string[] = []
+  let current_value: string = ""
+  
+  const add_value = () => {
+    if (current_value) options = options.concat([current_value])
+    current_value = ""
+  }
+
+  const submit = () => axios
+                      .post("")
+                      .then(({data}: {data: Poll[]} )=> data)
+
+   
 </script>
 
 <label>poll name</label>
-<input placeholder="" type="text">
-<br>
-<br>
-<div>
-  <input placeholder="add option" type="text">
-  <button>✓</button>
-</div>
-<button type="submit">create poll</button>
-
+<input bind:value={name} placeholder="" type="text" />
+<br />
+<br />
+{#each options as option}
+ <h2>{option}</h2>
+{/each}
+<form on:submit|preventDefault >
+  <input bind:value={current_value} type="text" />
+  <button on:click={add_value}>✓</button>
+</form >
+<button disabled={!(options.length >= 2 && name.replace(/\s+/g, ""))} type="submit">create poll</button>
