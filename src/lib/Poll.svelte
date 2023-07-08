@@ -7,6 +7,7 @@
   //TODO make a submit button at the end that sends your ranking
   //TODO make an add option thing
   import { selected } from "../store";
+  import AddRanking from "./poll/AddRanking.svelte"
 </script>
 
 {#if $selected}
@@ -20,6 +21,7 @@
   <br>
   {/each}
 </ul>
+<AddRanking/>
 <button>
   submit ranking
 </button>
