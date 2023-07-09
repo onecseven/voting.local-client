@@ -14,5 +14,6 @@
 <style>
   :global(button) {
     transition: all 0.25s;
+    border-radius: 5px;
   }
 </style>
