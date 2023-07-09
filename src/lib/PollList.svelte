@@ -7,15 +7,17 @@
   const select = (selection: Poll) => selected.set(selection)
 </script>
 
-<div class='pollList'>
+<div class="pollList">
   {#each polls as poll}
-  <Link class="pollo" to="/poll">
-    <button on:click={() => select(poll)}>
-        {poll.name}
-      </button>
-    </Link>
+    <div>
+      <Link class="pollo" to="/poll">
+        <button on:click={() => select(poll)}>
+          {poll.name}
+        </button>
+      </Link>
+    </div>
   {/each}
-  </div>
+</div>
 
 <style>
   button {
@@ -23,6 +25,7 @@
     height: 40px;
     text-align: left;
     font-size: larger;
+    filter: hue-rotate(210deg);
   }
 
   button:hover {
@@ -31,6 +34,10 @@
 
   .pollList {
     display: grid;
+  }
+
+  .pollList > * {
+    margin: 0.5% 0 1% 0;
   }
 
   :global(.pollo):hover {

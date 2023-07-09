@@ -15,3 +15,10 @@ let postOption = () => axios
   <input bind:value={current_value} placeholder="add option" type="text" />
   <button disabled={!(current_value.replace(/\s+/g, "") && current_value.length > 0)} on:click={postOption}>✓</button>
 </form >
+
+<style>
+  input {
+    margin-top: 2%;
+    height: 40px;
+  }
+</style>

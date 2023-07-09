@@ -15,9 +15,12 @@ export let items: string[]
 </main>
 
 <style>
+
   button {
     width: 100%;
     height:40px;
+    font-size: larger;
+    text-align: left;
   }
 
   ul {
@@ -43,7 +46,9 @@ export let items: string[]
     padding: 0;
     width: auto;
     max-width: 20vw;
-    float: left;
     min-width: 210px;
+  }
+  .callout:nth-last-child(1) {
+    margin-bottom: 1%;
   }
 </style>

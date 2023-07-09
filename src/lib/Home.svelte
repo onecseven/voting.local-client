@@ -17,7 +17,13 @@
   {/await}
   <Link to="create_poll">
     <button>
-      This goes to CreatePoll
+      create poll
     </button>
   </Link>
 </main>
+
+<style>
+    button:hover {
+    border-bottom: 1px solid #d9d8dc;
+  }
+</style>
