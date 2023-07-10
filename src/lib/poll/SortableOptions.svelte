@@ -24,10 +24,11 @@
   }
 </script>
 
+<main
+class="callout"
+>
 <input bind:value={user} placeholder="What's your name?" type="text" />
-<main>
   <ul
-    class="callout"
     use:dndzone={{ items: deco_items, flipDurationMs }}
     on:consider={handleSort}
     on:finalize={handleSort}
@@ -37,14 +38,15 @@
         ▸ {item.option}
       </button>
     {/each}
-    <AddRanking />
-    <button disabled={!(user.length >= 2 && user.replace(/\s+/g, ""))}  on:click={submit} > submit ranking </button>
   </ul>
+  <AddRanking />
+  <button disabled={!(user.length >= 2 && user.replace(/\s+/g, ""))}  on:click={submit} > submit ranking </button>
 </main>
 
 <style>
   ul {
     margin: 0;
+    padding: 0;
   }
   ul > * {
     margin: 2% 0 2% 0;
@@ -73,10 +75,9 @@
     box-shadow: none;
     margin: 0;
     margin-left: 0px;
-    padding: 0;
+    padding: 5%;
     width: auto;
     max-width: 20vw;
-    float: left;
     min-width: 210px;
   }
   ul {
