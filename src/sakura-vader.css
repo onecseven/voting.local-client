@@ -11,6 +11,7 @@ html {
 }
 
 body {
+  display: table;
   font-size: 1.8rem;
   line-height: 1.618;
   max-width: 38em;

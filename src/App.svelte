@@ -3,13 +3,17 @@
   import Home from "./lib/Home.svelte"
   import Poll from "./lib/Poll.svelte"
   import CreatePoll from "./lib/CreatePoll.svelte"
+  import Ranking from "./lib/ranking/Ranking.svelte"
 </script>
 
 <Router>
-  <Route path="/"><Home /></Route>
-  <Route path="/poll"><Poll /></Route>
-  <Route path="/create_poll"><CreatePoll/></Route>
-  <Route path="/poll_answers"><p>TODO</p></Route>
+  <body>
+    <Route path="/"><Home /></Route>
+    <Route path="/poll"><Poll /></Route>
+    <Route path="/create_poll"><CreatePoll/></Route>
+    <Route path="/poll_answers"><p>TODO</p></Route>
+    <Route path="/rankings"><Ranking/></Route>
+  </body>
 </Router>
 <style>
   :global(button) {
