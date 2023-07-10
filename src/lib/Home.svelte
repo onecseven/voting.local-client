@@ -3,18 +3,20 @@
   import PollList from './PollList.svelte'
   import type { Poll } from "../types"
   import { Link } from 'svelte-routing'
-  let promise = axios.get("http://127.0.0.1:3333/polls").then(({data}: {data: Poll[]} )=> data)
+  import { onMount } from 'svelte'
+  import { polls } from '../store'
+  onMount(() => {
+    const res = axios
+      .get(`http://127.0.0.1:3333/polls`)
+      .then(({ data }: {data: Poll[]}) => polls.set(data))
+      .catch((e) => console.error("error mounting polls"))
+  })
+
 </script>
 
 <main>
   <h1>active polls</h1>
-  {#await promise}
-  <p>waiting for server...</p>
-  {:then polls}
-  <PollList {polls} />
-  {:catch error}
-  <p>error</p>
-  {/await}
+  <PollList/>
   <Link to="create_poll">
     <button>
       create poll
