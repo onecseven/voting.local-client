@@ -14,7 +14,7 @@
   }))
   
   const submit = () => axios
-                      .post("http://127.0.0.1:3333/ranking", ({user, poll: $selected.name, ranking: deco_items.map(({option}) => option)}))
+                      .post("/ranking", ({user, poll: $selected.name, ranking: deco_items.map(({option}) => option)}))
                       .then(({data}) => selected.set(data) )
                       .then(() => navigate("/rankings"))
                       .catch(e => console.error('submit error'))

@@ -16,7 +16,7 @@
 
   const submit = () =>
     axios
-      .post("http://127.0.0.1:3333/polls", { name, options })
+      .post("/polls", { name, options })
       .then(({ data }: { data: Poll }) => selected.set(data))
       .then(() => navigate("/poll"))
       .catch((e) => console.error("submit error"))

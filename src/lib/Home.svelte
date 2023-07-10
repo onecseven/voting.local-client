@@ -7,7 +7,7 @@
   import { polls } from '../store'
   onMount(() => {
     const res = axios
-      .get(`http://127.0.0.1:3333/polls`)
+      .get(`/polls`)
       .then(({ data }: {data: Poll[]}) => polls.set(data))
       .catch((e) => console.error("error mounting polls"))
   })

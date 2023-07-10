@@ -5,7 +5,7 @@
   let current_value = ""
   let postOption = () =>
     axios
-      .patch("http://127.0.0.1:3333/polls", {
+      .patch("/polls", {
         poll: $selected.name,
         option: current_value,
       })

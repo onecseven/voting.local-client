@@ -9,7 +9,7 @@
   onMount(() => {
     if ($selected === null) return console.error("null selection")
     const res = axios
-      .post(`http://127.0.0.1:3333/pollID`, {
+      .post(`/pollID`, {
         name: $selected?.name,
       })
       .then(({ data }) => selected.set(data))
