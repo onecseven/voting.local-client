@@ -1,14 +1,14 @@
 <script lang="ts">
   import type { Poll } from "../types"
-  import { selected } from "../store"
+  import { selected, polls } from "../store"
   import { Router, Route } from "svelte-routing"
   import { Link } from "svelte-routing"
-  export let polls: Poll[]
   const select = (selection: Poll) => selected.set(selection)
 </script>
 
+{#if $polls}
 <div class="pollList">
-  {#each polls as poll}
+  {#each $polls as poll}
     <div>
       <Link class="pollo" to="/poll">
         <button on:click={() => select(poll)}>
@@ -18,6 +18,7 @@
     </div>
   {/each}
 </div>
+{/if}
 
 <style>
   button {
@@ -34,10 +35,11 @@
 
   .pollList {
     display: grid;
+    margin: 2.5%;
   }
 
   .pollList > * {
-    margin: 0.5% 0 1% 0;
+    margin: 2% 0 1% 0;
   }
 
   :global(.pollo):hover {
