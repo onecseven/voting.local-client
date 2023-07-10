@@ -1,13 +1,14 @@
 <script lang="ts">
-export let items: string[]
+  export let items: string[]
+  export let highlight: string = ""
 </script>
-
+  
 <main>
   <ul
     class="callout"
   >
-    {#each items as item}
-      <button class="item">
+    {#each items as item, i}
+      <button class={`item ${item === highlight ? "highlight" : ""}`}>
         {item}
       </button>
     {/each}
@@ -34,6 +35,10 @@ export let items: string[]
     width: 100%;
     height: 40px;
     filter: hue-rotate(115deg);
+  }
+
+  .highlight {
+    filter: hue-rotate(180deg);
   }
 
   .callout {
